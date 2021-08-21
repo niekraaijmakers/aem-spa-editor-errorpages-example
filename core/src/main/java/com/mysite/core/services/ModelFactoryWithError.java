@@ -2,22 +2,14 @@ package com.mysite.core.services;
 
 import com.adobe.acs.commons.errorpagehandler.ErrorPageHandlerService;
 import com.adobe.cq.export.json.ComponentExporter;
-import com.adobe.cq.export.json.ContainerExporter;
-import com.day.cq.commons.feed.StringResponseWrapper;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.SlingHttpServletResponse;
-import org.apache.sling.api.request.RequestPathInfo;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.factory.*;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.propertytypes.ServiceRanking;
 
-import javax.servlet.*;
-import java.io.IOException;
 import java.util.Map;
 
 @Component(service = {ModelFactory.class}, immediate = true,

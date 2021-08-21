@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/mysite/clientlibs"/>
+    <filter root="/apps/mysite/components"/>
+    <filter root="/apps/mysite/i18n"/>
+    <filter root="/apps/sling" mode="merge"/>
+</workspaceFilter>

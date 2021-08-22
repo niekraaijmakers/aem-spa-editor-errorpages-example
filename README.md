@@ -44,9 +44,47 @@ Any other API-calls or javascript error handling is not covered here.
 However, you could leverage the ACS AEM commons error page to display an authorable error message.
 
 
-For the back-end to work we need to intercept the ModelFactory:
+For the back-end to work we need to do 2 things, 1 set structureDepth to 0 (so we don't load child pages).
+I haven't found a way to make this work properly with structureDepth not set to 0.
+Then we just set some dummy code to create an exception.
 
 
+com.mysite.core.models.PageWithErrorHandling
+
+```java
+
+@Model(adaptables = SlingHttpServletRequest.class, adapters = { Page.class,
+        ContainerExporter.class }, resourceType = PageWithErrorHandling.RESOURCE_TYPE)
+@Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
+public class PageWithErrorHandling implements Page {
+
+    static final String RESOURCE_TYPE = "mysite/components/page";
+
+    @Self
+    @Via(type = ResourceSuperType.class)
+    protected Page delegate;
+
+    @Self
+    protected SlingHttpServletRequest request;
+
+    @AemObject
+    protected com.day.cq.wcm.api.Page resourcePage;
+
+    public Map<String, ? extends ComponentExporter> getExportedItems() {
+
+        if (resourcePage.getName().equals("pagewitherror")) {
+            throw new RuntimeException("Let's crash this party!");
+        }
+
+        return delegate.getExportedItems();
+
+    }
+
+    //other delegate methods
+}
+```
+
+If you want to individually catch component errors, you could try to intercept the ModelFactoryWithError.
 com.mysite.core.services.ModelFactoryWithError
 
 ```java
@@ -93,6 +131,6 @@ public class ModelFactoryWithError implements ModelFactory {
 }
 ```
 
-What we do is simply feed what we configured on the error page back, if the model failed to adapt.
-It is not the cleanest solution ever, but it does not require that much code to make it work.
-You can test it out by throwing an Exception in a Sling Model on PostConstruct, but a demo is provided. 
+Be very careful here, there are potential side effects with this method.
+What I would recommend, is to perform a resourceType check and catch your own components.
+You can also create an abstract class that catches the postconstruct method and return some standard error json.

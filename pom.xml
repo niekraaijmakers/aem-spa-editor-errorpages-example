@@ -630,6 +630,7 @@ Bundle-DocURL:
                 <version>5.0.6</version>
                 <type>zip</type>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 

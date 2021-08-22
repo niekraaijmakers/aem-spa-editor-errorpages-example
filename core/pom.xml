@@ -147,5 +147,10 @@ Import-Package: javax.annotation;version=0.0.0,*
             <version>5.0.6</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.adobe.aem</groupId>
+            <artifactId>spa.project.core.core</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>

@@ -23,7 +23,7 @@
                     jcr:title="SPA + ACS aem commons error pages Language Navigation - Experience Fragment"
                     sling:resourceType="wcm/core/components/policy/policy"
                     navigationRoot="/content/mysite"
-                    structureDepth="1">
+                    structureDepth="0">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_xfm>
             </languagenavigation>
@@ -353,7 +353,7 @@
                     sling:resourceType="wcm/core/components/policy/policy"
                     clientlibs="[mysite.react]"
                     isRoot="{Boolean}true"
-                    structureDepth="3"
+                    structureDepth="0"
                 />
             </spa>
         </components>

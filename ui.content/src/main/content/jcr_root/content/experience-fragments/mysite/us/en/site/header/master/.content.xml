@@ -19,12 +19,12 @@
                 collectAllPages="false"
                 navigationRoot="/content/mysite/us/en"
                 skipNavigationRoot="false"
-                structureDepth="1"/>
+                structureDepth="0"/>
             <languagenavigation
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="mysite/components/languagenavigation"
                 navigationRoot="/content/mysite/us"
-                structureDepth="2"/>
+                structureDepth="0"/>
             <search
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="mysite/components/search"
